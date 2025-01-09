@@ -17,11 +17,11 @@
     <tbody>
       @foreach($users as $user)
       <tr>
-        <td>{{ $user['id'] }}</td>
-        <td>{{ $user['name'] }}</td>
-        <td>{{ $user['surname'] }}</td>
+        <td>{{ $user->getId() }}</td>
+        <td>{{ $user->getName() }}</td>
+        <td>{{ $user->getSurName() }}</td>
         <td>
-          <a href="/user/{{ $user['id'] }}">Editar</a>
+          <a href="/user/{{ $user->getId() }}">Editar</a>
         </td>
       </tr>
       @endforeach

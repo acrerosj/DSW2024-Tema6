@@ -3,20 +3,23 @@
 namespace Dsw\Tema6\Models;
 
 class User {
-  static private $users = [
-    ['id' => '1', 'name' => 'Pepe', 'surname' => 'García'],
-    ['id' => '2', 'name' => 'Ana', 'surname' => 'Marín'],
-    ['id' => '3', 'name' => 'Julia', 'surname' => 'Leiva'],
-    ['id' => '4', 'name' => 'Roberto', 'surname' => 'Durán'],
-  ];
+  private int $id;
+  private string $name;
+  private string $surname;
+  private string $email;
 
- public static function all() {
-  return self::$users;
- } 
+  public function __construct(int $id, string $name, string $surname, string $email) {
+    $this->id = $id;
+    $this->name = $name;
+    $this->surname = $surname;
+    $this->email = $email;
+  }
 
- public static function get($id) {
-  return array_first(self::$users, function($user) use($id) {
-    return $user['id'] == $id;
-  });
- }
+  public function getId() { return $this->id; }
+
+  public function getName() { return $this->name; }
+
+  public function getSurname() { return $this->surname; }
+
+  public function getEmail() { return $this->email; }
 }
