@@ -22,6 +22,7 @@
         <td>{{ $user->getSurName() }}</td>
         <td>
           <a href="/user/{{ $user->getId() }}">Editar</a>
+           
         </td>
       </tr>
       @endforeach

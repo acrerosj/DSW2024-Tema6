@@ -24,4 +24,22 @@ class UserController extends Controller{
     ];
     echo $this->blade->view()->make('user.show', $data)->render();
   }
+
+  public function create() {
+    echo $this->blade->view()->make('user.create')->render();
+  }
+
+  public function post() {
+    $name = $_POST['name'];
+    $surname = $_POST['surname'];
+    $email = $_POST['email'];
+    $userDAO = new UserImplement();
+    $userDAO->create($name, $surname, $email);
+    $this->index();
+  }
+
+  public function delete($param) {
+    $id = $param['id'];
+    echo "Eliminando el usuario con id: " . $id;
+  }
 }
