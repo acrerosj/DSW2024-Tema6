@@ -40,6 +40,26 @@ class UserController extends Controller{
 
   public function delete($param) {
     $id = $param['id'];
-    echo "Eliminando el usuario con id: " . $id;
+    $userDAO = new UserImplement();
+    $userDAO->delete($id);
+    $this->index();
+  }
+
+  public function edit($param) {
+    $id = $param['id'];
+    $userDAO = new UserImplement();
+    $user = $userDAO->findById($id);
+    echo $this->blade->view()->make('user.edit', compact("user"))->render();
+  }
+
+  public function put($param) {
+    $id = $param['id'];
+    var_dump($_POST);
+    $name = $_POST['name'];
+    $surname = $_POST['surname'];
+    $email = $_POST['email'];
+    $userDAO = new UserImplement();
+    $userDAO->update($id, $name, $surname, $email);
+    $this->index();
   }
 }
