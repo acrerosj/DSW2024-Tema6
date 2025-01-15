@@ -4,6 +4,7 @@ error_reporting(E_ALL ^ E_DEPRECATED);
 use Philo\Blade\Blade;
 
 require '../vendor/autoload.php';
+$pathController = "Dsw\\Tema6\\Controllers\\";
 
 $router = new AltoRouter();
 
@@ -17,21 +18,10 @@ if (isset($_POST['_method'])) {
 
 // map homepage
 $router->map('GET', '/', function() use ($blade) {
-  // require __DIR__ . '/../src/views/index.php';
-  //global $blade;
   echo $blade->view()->make('index')->render();
 });
 
-$router->map('GET', '/user', 'UserController#index', 'index');
-$router->map('GET', '/user/[i:id]', 'UserController#show', 'user-show');
-$router->map('GET', '/user/create', 'UserController#create', 'user-create');
-$router->map('POST', '/user', 'UserController#post');
-$router->map('DELETE', '/user/[i:id]', 'UserController#delete');
-$router->map('GET', '/user/[i:id]/edit', 'UserController#edit');
-$router->map('PUT','/user/[i:id]', 'UserController#put');
-
-// echo URL to user-details page for ID 5
-// echo $router->generate('user-details', ['id' => 5]); // Output: "/users/5"
+include('../src/routers/user.php');
 
 $match = $router->match();
 if( is_array($match) ) {
@@ -40,7 +30,7 @@ if( is_array($match) ) {
   } else {
     $target = $match['target'];
     list($controllerName, $action) = explode("#", $target);
-    $controller = new ("Dsw\\Tema6\\Controllers\\" . $controllerName)();
+    $controller = new ($pathController . $controllerName)();
     $controller->$action($match['params']);
   }
 } else {
