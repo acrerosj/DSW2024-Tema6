@@ -6,3 +6,5 @@ $router->map('POST', '/group', 'groupController#post');
 $router->map('DELETE', '/group/[i:id]', 'groupController#delete');
 $router->map('GET', '/group/[i:id]/edit', 'groupController#edit');
 $router->map('PUT','/group/[i:id]', 'groupController#put');
+$router->map('GET', '/group/[i:id]/users', 'groupController#users');
+$router->map('POST', '/group/[i:id]/users', 'groupController#postusers');

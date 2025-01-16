@@ -22,7 +22,10 @@
       <li>{{ $user->getName() }}</li>
     @endforeach
   </ul>
+  <p>
+    <a href="/group/{{ $group->getId() }}/users"><button>Modificar los usuarios</button></a>
+  </p>
 @else
   <h2>Grupo no encontrado</h2>
 @endif
-@endsection
+@endsection 
